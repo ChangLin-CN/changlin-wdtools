@@ -1,0 +1,44 @@
+{
+  "name": "changlin-wdtools",
+  "version": "0.0.0",
+  "description": "The  functions that be used in the browser environment",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:src && npm run test:dist && npm run test:umd",
+    "test:src": "mocha  --require babel-register test/src.test.js",
+    "test:dist": "mocha  test/dist.test.js",
+    "test:umd":"mocha  test/dist.test.js",
+    "build": "npm run build:doc && npm run build:js",
+    "build:js": "babel src -d dist",
+    "build:doc": "node createDoc.js",
+    "pb": "npm run build && npm run test && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChangLin-CN/changlin-wdtools.git"
+  },
+  "keywords": [
+    "tools",
+    "cookie",
+    "browser"
+  ],
+  "author": "changlin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChangLin-CN/changlin-wdtools/issues"
+  },
+  "homepage": "https://github.com/ChangLin-CN/changlin-wdtools#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.1",
+    "jsdoc-to-markdown": "^3.0.0",
+    "mocha": "^3.5.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.23.0"
+  }
+}
