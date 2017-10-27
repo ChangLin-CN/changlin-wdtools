@@ -2,104 +2,93 @@
  * @module cookie
  */
 
+import {extend,ONE_YEAR,isObject,isDate,isNumber,isString} from 'changlin-util'
 
-
-/**
- * 字符串两端剪切
- *
- * @param {string}  string
- * @param {string}  fe  f or e or  fe
- * @param {string}  char
- *
- * @example
- * ```javascript
- * trim('   abc   ')//=>'abc'
- * trim('   abc   ','f')//=>'abc   '
- * trim('   abc   ','e')//=>'   abc'
- * trim('**abc**','*')//=>'abc'
- * ```
- *
- * @returns {string}
- */
-
+/** Class Cookie. */
 export class Cookie{
-    constructor({maxage,path,domain}={path:'/'}){
-        
-        //创建cookie对象
-        let cookie=(function(){
-            let cookie={};
-            let all=document.cookie;
-            if(all===''){return cookie}
-            let list=all.split(';');
-            for(let i=0;i<list.length;i++){
-                let p=list[i].indexOf('=');
-                let name=list[i].substring(0,p).replace(/^\s*/,'').replace(/\s*$/,'');
-                let value=list[i].substring(p+1);
-                value=decodeURIComponent(value);
-                cookie[name]=value;
-            }
-        
-            return cookie
-        
-        }());
-        
-        
-        //将所有cookie名字存在keys里
-        let keys=[];
-        for(let key in cookie) keys.push(key);
-    
-        //定义存储API公用属性和方法
-        this.length=keys.length;
-    
-        //返回第n个cookie的名字
-        this.key=function(n){
-            if(n<0 || n>keys.length) return null;
-            return keys[n];
-        };
-    
-        //返回指定name 的cookie值；
-        this.getItem=function(name){
-            return cookie[name] || null
-        };
-    
-        //存储cookie的值
-    
-        this.setItem=function(key,value){
-            console.log(cookie);
-            if(!(key in cookie)){
-                keys.push(key);
-                this.length++;
-            }
-        
-            cookie[key]=value;
-        
-            let newcookie=key+'='+encodeURIComponent(value);
-            if(maxage) newcookie+=";max-age="+maxage;
-            if(path) newcookie+=';path='+path;
-            if(domain) newcookie+=';domain='+domain;
-            document.cookie=newcookie;
-        };
-    
-        //删除指定cookie
-        this.removeItem=function(key){
-            if(!(key in cookie)) return;
-            delete cookie[key];
-            for (let i=0;i<keys.length;i++){
-                if(keys[i]==key){
-                    keys.splice(i,1)
-                }
-            }
-            this.length--;
-            document.cookie=key+'=;max-age=0'+';path='+path+';domain='+domain;
-        };
-        //删除所有cookie
-        this.clear=function(){
-            for(let i=0;i<keys.length;i++){
-                document.cookie=keys[i]+'=;max-age=0'+';path='+path+';domain='+domain;
-            }
-            cookie={};
-            keys=[];
-            this.length=0;
+    /**
+     * 创建cookie对象
+     * @param {object} config -
+     */
+    constructor(config){
+        let defaultConfig={
+            //三年
+            maxAge:3*ONE_YEAR/1000,
+            path:'/',
+            domain:undefined,
         }
+        if(isObject(config)){
+            extend(defaultConfig,config)
+        }
+        this.getDefaultConfig=()=>defaultConfig;
     }
-};
+    /**
+     * Get cookie value
+     * @param {string} name cookie name
+     * @return {string} cookie value
+     */
+    get(name){
+        if(!isString(name)){
+            throw new Error('name should be string')
+        }
+        let result='',c=document.cookie;
+        let match=new RegExp(name+"=([^;]*);?").test(c);
+        if(match){result=decodeURIComponent(RegExp.$1)}
+        return result
+    }
+    getObject=(name)=>{
+        let result={};
+        try{
+            result=JSON.parse(this.get(name))
+        }catch (e){
+        
+        }
+        return result
+    }
+    
+    /**
+     * set cookie value
+     * @param {string} name cookie name
+     * @param {string | number | object} value cookie value
+     * @param {object} attributes cookie value
+     * @return {string} cookie value
+     */
+    set=(name,value,attributes)=>{
+        if(!isString(name)){
+            throw new Error('name should be string')
+        }
+        if(/;/.test(name)){
+            throw new Error('name should not include ;')
+        }
+        
+        if(isString(value)||isNumber(value)){
+            value=encodeURIComponent(value)
+        }else if(isObject(value)){
+            value=encodeURIComponent(JSON.stringify(value));
+        }else{
+            throw new Error('value should be string | number | object ')
+        }
+        
+        if(isObject(attributes)){
+            attributes=extend(this.getDefaultConfig(),attributes);
+        }else{
+            attributes=this.getDefaultConfig();
+        }
+        
+        let c=`${name}=${value};max-age=${attributes.maxAge};path=${attributes.path};${attributes.domain ? ('domain='+attributes.domain):''}`;
+        
+        document.cookie=c;
+        
+        return c
+    }
+    /**
+     * set cookie value
+     * @param {string} name cookie name
+     * @return {string} cookie value
+     */
+    del=(name)=>{
+        return this.set(name,'',{maxAge:0});
+    }
+
+    
+}
