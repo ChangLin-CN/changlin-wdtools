@@ -70,7 +70,7 @@ export class Cookie{
         }
         
         if(isObject(attributes)){
-            attributes=extend(this.getDefaultConfig(),attributes);
+            attributes=extend(extend({},this.getDefaultConfig()),attributes);
         }else{
             attributes=this.getDefaultConfig();
         }

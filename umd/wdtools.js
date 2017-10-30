@@ -1137,7 +1137,7 @@ var Cookie = exports.Cookie = function () {
             }
 
             if ((0, _changlinUtil.isObject)(attributes)) {
-                attributes = (0, _changlinUtil.extend)(_this.getDefaultConfig(), attributes);
+                attributes = (0, _changlinUtil.extend)((0, _changlinUtil.extend)({}, _this.getDefaultConfig()), attributes);
             } else {
                 attributes = _this.getDefaultConfig();
             }
