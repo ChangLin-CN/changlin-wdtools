@@ -4,6 +4,8 @@
  */
 
 declare module "changlin-wdtools" {
-
-
+    export class Cookie{
+        constructor:(config:object)=>any;
+        getCookie:(name:string)=>string
+    }
 }

@@ -1112,15 +1112,15 @@ var Cookie = exports.Cookie = function () {
 
         (0, _classCallCheck3.default)(this, Cookie);
 
-        this.getObject = function (name) {
+        this.getCookieObject = function (name) {
             var result = {};
             try {
-                result = JSON.parse(_this.get(name));
+                result = JSON.parse(_this.getCookie(name));
             } catch (e) {}
             return result;
         };
 
-        this.set = function (name, value, attributes) {
+        this.setCookie = function (name, value, attributes) {
             if (!(0, _changlinUtil.isString)(name)) {
                 throw new Error('name should be string');
             }
@@ -1149,8 +1149,8 @@ var Cookie = exports.Cookie = function () {
             return c;
         };
 
-        this.del = function (name) {
-            return _this.set(name, '', { maxAge: 0 });
+        this.delCookie = function (name) {
+            return _this.setCookie(name, '', { maxAge: 0 });
         };
 
         var defaultConfig = {
@@ -1174,8 +1174,8 @@ var Cookie = exports.Cookie = function () {
 
 
     (0, _createClass3.default)(Cookie, [{
-        key: 'get',
-        value: function get(name) {
+        key: 'getCookie',
+        value: function getCookie(name) {
             if (!(0, _changlinUtil.isString)(name)) {
                 throw new Error('name should be string');
             }

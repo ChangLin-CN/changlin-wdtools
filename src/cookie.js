@@ -27,7 +27,7 @@ export class Cookie{
      * @param {string} name cookie name
      * @return {string} cookie value
      */
-    get(name){
+    getCookie(name){
         if(!isString(name)){
             throw new Error('name should be string')
         }
@@ -36,10 +36,10 @@ export class Cookie{
         if(match){result=decodeURIComponent(RegExp.$1)}
         return result
     }
-    getObject=(name)=>{
+    getCookieObject=(name)=>{
         let result={};
         try{
-            result=JSON.parse(this.get(name))
+            result=JSON.parse(this.getCookie(name))
         }catch (e){
         
         }
@@ -53,7 +53,7 @@ export class Cookie{
      * @param {object} attributes cookie value
      * @return {string} cookie value
      */
-    set=(name,value,attributes)=>{
+    setCookie=(name,value,attributes)=>{
         if(!isString(name)){
             throw new Error('name should be string')
         }
@@ -86,8 +86,8 @@ export class Cookie{
      * @param {string} name cookie name
      * @return {string} cookie value
      */
-    del=(name)=>{
-        return this.set(name,'',{maxAge:0});
+    delCookie=(name)=>{
+        return this.setCookie(name,'',{maxAge:0});
     }
 
     
