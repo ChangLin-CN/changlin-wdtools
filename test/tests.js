@@ -33,3 +33,65 @@ describe('Cookie', function () {
     
     
 });
+
+describe('search', function () {
+    it('searchParse', function () {
+        let obj=wdtools.searchParse('?a=1234&b&c=12%26%3D%3F%3A');
+        expect(obj.a).to.be.equal('1234');
+        expect(obj.b).to.be.equal(true);
+        expect(obj.c).to.be.equal('12&=?:');
+    });
+    it('searchParse error', function () {
+        expect(function () {
+            wdtools.searchParse();
+        }).to.throwError(Error);
+    });
+      it('searchParse error', function () {
+        expect(function () {
+            wdtools.searchParse(1234);
+        }).to.throwError(Error);
+    });
+    
+    it('searchStringify', function () {
+        let obj={
+            a:'1234',
+            b:true,
+            c:'12&=?:'
+        };
+        let obj2={
+            a:'1234',
+            b:"",
+            c:'12&=?:'
+        };
+        expect(wdtools.searchStringify(obj)).to.be.equal('a=1234&b&c=12%26%3D%3F%3A');
+        expect(wdtools.searchStringify(obj2)).to.be.equal('a=1234&b=&c=12%26%3D%3F%3A');
+        
+    });
+    
+    it('searchStringify error', function () {
+        expect(function () {
+            wdtools.searchStringify([]);
+        }).to.throwError(Error);
+        expect(function () {
+            wdtools.searchStringify(1234);
+        }).to.throwError(Error);
+    });
+    
+    it('searchAddParams', function () {
+      const str='?a=1234&b=4567',
+            obj={b:9999,c:'12&=?:'},
+            str2='b=3333&d=4444';
+      
+      let res=wdtools.searchParse(wdtools.searchAddParams(str,obj,str2));
+      
+      
+        expect(res.a).to.be.equal('1234');
+        expect(res.b).to.be.equal('3333');
+        expect(res.c).to.be.equal('12&=?:');
+        expect(res.d).to.be.equal('4444');
+        
+        
+    });
+    
+});
+
