@@ -1,4 +1,3 @@
 export {Cookie} from './cookie.js'
-export {searchParse,searchStringify} from './search.js'
-
+export {searchParse,searchStringify,searchExtend} from './search.js'
 

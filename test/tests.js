@@ -44,12 +44,12 @@ describe('search', function () {
     it('searchParse error', function () {
         expect(function () {
             wdtools.searchParse();
-        }).to.throwError(Error);
+        }).to.throw(Error);
     });
       it('searchParse error', function () {
         expect(function () {
             wdtools.searchParse(1234);
-        }).to.throwError(Error);
+        }).to.throw(Error);
     });
     
     it('searchStringify', function () {
@@ -69,20 +69,21 @@ describe('search', function () {
     });
     
     it('searchStringify error', function () {
+        
         expect(function () {
             wdtools.searchStringify([]);
-        }).to.throwError(Error);
-        expect(function () {
-            wdtools.searchStringify(1234);
-        }).to.throwError(Error);
+        }).to.throw(Error);
+        // expect(function () {
+        //     wdtools.searchStringify(1234);
+        // }).to.throw(Error);
     });
     
-    it('searchAddParams', function () {
+    it('searchExtend', function () {
       const str='?a=1234&b=4567',
             obj={b:9999,c:'12&=?:'},
             str2='b=3333&d=4444';
       
-      let res=wdtools.searchParse(wdtools.searchAddParams(str,obj,str2));
+      let res=wdtools.searchParse(wdtools.searchExtend(str,obj,str2));
       
       
         expect(res.a).to.be.equal('1234');

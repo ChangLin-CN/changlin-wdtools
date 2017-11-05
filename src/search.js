@@ -2,7 +2,7 @@
  * @module search
  */
 
-import {isString,isUndefined,isObject} from 'changlin-util'
+import {isString,isUndefined,isObject,isNumber,isBoolean,extend} from 'changlin-util'
 
 /**
  * 解析window.location.search
@@ -49,7 +49,41 @@ export function searchStringify(object) {
     if(!isObject(object))throw new Error('The first parameter of searchStringify should be object. ')
     let result='';
    for(let p in object){
-       result+=(result==''?'':'&')+p+object[p]
+       if(isString(object[p])||isNumber(Object[p])){
+           result+=`${result===''?'':'&'}${p}=${encodeURIComponent(object[p])}`
+       }else if(isBoolean(object[p])&&object[p]){
+           result+=`${result===''?'':'&'}${p}`
+       }
    }
+    return result
+}
+
+/**
+ * 合并所有参数，返回字符串 （注意返回字符串不含?）
+ *
+ * @param {object|string} arguments
+ * @example
+ *
+ *
+ * ```javascript
+ *
+ * ```
+ * @returns {string}
+ */
+
+export function searchExtend() {
+    if(arguments.length===0){
+        return
+    }
+    let arr=[];
+    for(let n of arguments){
+        if(isObject(n)){
+            arr.push(extend(n))
+        }else if(isString(n)){
+            arr.push(searchParse(n))
+        }
+    }
+    let obj=extend(...arr);
+    let result=searchStringify(obj);
     return result
 }
