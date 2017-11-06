@@ -16,7 +16,6 @@ import {isString,isUndefined,isObject,isNumber,isBoolean,extend} from 'changlin-
  * ```
  * @returns {object}
  */
-
 export function searchParse(search) {
     if(!isString(search))throw new Error('The first parameter of searchParse should be string. ')
     let result={};
@@ -32,6 +31,7 @@ export function searchParse(search) {
     });
     return result
 }
+
 /**
  * 将对象转为字符串，window.location.search格式 （注意返回字符串不含?）
  *
@@ -44,7 +44,6 @@ export function searchParse(search) {
  * ```
  * @returns {string}
  */
-
 export function searchStringify(object) {
     if(!isObject(object))throw new Error('The first parameter of searchStringify should be object. ')
     let result='';

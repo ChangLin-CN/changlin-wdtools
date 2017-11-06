@@ -3,7 +3,7 @@ const path     = require('path'),
       jsdoc2md = require('jsdoc-to-markdown');
 
 jsdoc2md.render({
-    files: [],
+    files: ['src/cookie.js','src/search.js'],
     template:require('./README.tpl.js').tpl
 }).then(d => {
     fs.writeFile(path.resolve(__dirname, 'README.md'), d)
