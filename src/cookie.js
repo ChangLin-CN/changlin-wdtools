@@ -1,6 +1,3 @@
-/**
- * @module cookie
- */
 
 import {extend,ONE_YEAR,isObject,isDate,isNumber,isString} from 'changlin-util'
 

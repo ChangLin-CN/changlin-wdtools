@@ -1,6 +1,4 @@
-/**
- * @module search
- */
+
 
 import {isString,isUndefined,isObject,isNumber,isBoolean,extend} from 'changlin-util'
 
