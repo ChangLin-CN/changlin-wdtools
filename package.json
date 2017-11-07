@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build:umd": "webpack",
-    "build": "npm run build:doc && npm run build:js",
+    "build": "npm run build:doc && npm run build:js && npm run build:umd",
     "build:js": "babel src -d dist",
     "build:doc": "node createDoc.js",
-    "pb": "npm run build && npm run test && npm publish"
+    "pb": "npm run build  && npm publish"
   },
   "repository": {
     "type": "git",

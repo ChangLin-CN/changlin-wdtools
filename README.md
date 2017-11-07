@@ -2,7 +2,22 @@
 # changlin-wdtools
 浏览器环境中使用的一些函数    / The  functions that be used in the browser environment
 
-## API
+### 安装
+```javascript
+npm i changlin-wdtools --save
+//或者
+npm install changlin-wdtools --save
+```
+
+### 使用
+```javascript
+//引入模块内函数
+import {setCookie} from "changlin-wdtools"
+
+```
+
+
+
 ## Functions
 
 <dl>
@@ -29,6 +44,18 @@
 </dd>
 <dt><a href="#searchExtend">searchExtend(arguments)</a> ⇒ <code>string</code></dt>
 <dd><p>合并所有参数，返回字符串 （注意返回字符串不含?）</p>
+</dd>
+<dt><a href="#getAbsoluteURL">getAbsoluteURL(location)</a> ⇒ <code>string</code></dt>
+<dd><p>获取绝对URL</p>
+</dd>
+<dt><a href="#isWeiXin">isWeiXin()</a> ⇒ <code>boolean</code></dt>
+<dd><p>判断是否为微信浏览器</p>
+</dd>
+<dt><a href="#isAndroid">isAndroid()</a> ⇒ <code>boolean</code></dt>
+<dd><p>判断是否为安卓端</p>
+</dd>
+<dt><a href="#isIOS">isIOS()</a> ⇒ <code>boolean</code></dt>
+<dd><p>判断是否为IOS端</p>
 </dd>
 </dl>
 
@@ -82,7 +109,7 @@
 | --- | --- | --- |
 | name | <code>string</code> | cookie name |
 | value | <code>string</code> \| <code>number</code> \| <code>object</code> | cookie value |
-| attributes | <code>object</code> | cookie value |
+| attributes | <code>object</code> | cookie config |
 
 <a name="deleteCookie"></a>
 
@@ -107,7 +134,7 @@
 | search | <code>string</code> | 
 
 **Example**  
-```javascript```
+```javascriptsearchParse('?c=4&b=5')//=>{c:4,b:5}```
 <a name="searchStringify"></a>
 
 ## searchStringify(object) ⇒ <code>string</code>
@@ -120,7 +147,7 @@
 | object | <code>object</code> | 
 
 **Example**  
-```javascript```
+```javascriptsearchStringify({a:'1234'})//=>'a=1234'```
 <a name="searchExtend"></a>
 
 ## searchExtend(arguments) ⇒ <code>string</code>
@@ -133,4 +160,33 @@
 | arguments | <code>object</code> \| <code>string</code> | 
 
 **Example**  
-```javascript```
+```javascriptsearchExtend('?a=3&b=4', {b:5}, {b:6,c:7})//=>'a=3&b=6&c=7'```
+<a name="getAbsoluteURL"></a>
+
+## getAbsoluteURL(location) ⇒ <code>string</code>
+获取绝对URL
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| location | <code>string</code> | 
+
+<a name="isWeiXin"></a>
+
+## isWeiXin() ⇒ <code>boolean</code>
+判断是否为微信浏览器
+
+**Kind**: global function  
+<a name="isAndroid"></a>
+
+## isAndroid() ⇒ <code>boolean</code>
+判断是否为安卓端
+
+**Kind**: global function  
+<a name="isIOS"></a>
+
+## isIOS() ⇒ <code>boolean</code>
+判断是否为IOS端
+
+**Kind**: global function  

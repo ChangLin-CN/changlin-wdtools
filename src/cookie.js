@@ -73,7 +73,7 @@ export function  getCookieObject(name){
  * 设置cookie值
  * @param {string} name cookie name
  * @param {string | number | object} value cookie value
- * @param {object} attributes cookie value
+ * @param {object} attributes cookie config
  * @return {string}
  */
 export function  setCookie(name,value,attributes){

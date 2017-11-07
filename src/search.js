@@ -10,11 +10,11 @@ import {isString,isUndefined,isObject,isNumber,isBoolean,extend} from 'changlin-
  *
  *
  * ```javascript
- *
+ *searchParse('?c=4&b=5')//=>{c:4,b:5}
  * ```
  * @returns {object}
  */
-export function searchParse(search) {
+export function searchParse(search=window.location.search) {
     if(!isString(search))throw new Error('The first parameter of searchParse should be string. ')
     let result={};
     if(/^\?/.test(search)){
@@ -38,7 +38,7 @@ export function searchParse(search) {
  *
  *
  * ```javascript
- *
+ *searchStringify({a:'1234'})//=>'a=1234'
  * ```
  * @returns {string}
  */
@@ -63,7 +63,7 @@ export function searchStringify(object) {
  *
  *
  * ```javascript
- *
+ *searchExtend('?a=3&b=4', {b:5}, {b:6,c:7})//=>'a=3&b=6&c=7'
  * ```
  * @returns {string}
  */
