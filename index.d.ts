@@ -36,4 +36,18 @@ declare module "changlin-wdtools" {
 
     export function getAbsoluteURL(url: string): string
 
+    export function requestAnimationFrame(callback: () => {}): number
+
+    export function cancelAnimationFrame(id: number): void
+
+    export function cssPrefix(key: string): string
+
+    export function css(el: object, key: string, value?: string): string
+
+    export function addEventListener(el: object, type: string, fn: () => {}, useCapture?: boolean = false): void
+
+    export function removeEventListener(el: object, type: string, fn: () => {}, useCapture?: boolean = false): void
+
+    export const hasTransition: boolean
+
 }

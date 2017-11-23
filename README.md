@@ -18,6 +18,14 @@ import {setCookie} from "changlin-wdtools"
 
 
 
+## Constants
+
+<dl>
+<dt><a href="#hasTransition">hasTransition</a></dt>
+<dd><p>Support transition</p>
+</dd>
+</dl>
+
 ## Functions
 
 <dl>
@@ -57,8 +65,30 @@ import {setCookie} from "changlin-wdtools"
 <dt><a href="#isIOS">isIOS()</a> ⇒ <code>boolean</code></dt>
 <dd><p>判断是否为IOS端</p>
 </dd>
+<dt><a href="#requestAnimationFrame">requestAnimationFrame(callback)</a> ⇒ <code>number</code></dt>
+<dd></dd>
+<dt><a href="#cancelAnimationFrame">cancelAnimationFrame(id)</a> ⇒ <code>undefined</code></dt>
+<dd></dd>
+<dt><a href="#cssPrefix">cssPrefix(key)</a> ⇒ <code>string</code></dt>
+<dd><p>prefix css</p>
+</dd>
+<dt><a href="#css">css(el, key, value)</a> ⇒ <code>string</code></dt>
+<dd><p>set or get style</p>
+</dd>
+<dt><a href="#addEventListener">addEventListener(el, type, fn, useCapture)</a> ⇒ <code>undefined</code></dt>
+<dd><p>addEventListener</p>
+</dd>
+<dt><a href="#removeEventListener">removeEventListener(el, type, fn, useCapture)</a> ⇒ <code>undefined</code></dt>
+<dd><p>removeEventListener</p>
+</dd>
 </dl>
 
+<a name="hasTransition"></a>
+
+## hasTransition
+Support transition
+
+**Kind**: global constant  
 <a name="setCookieDefaultConfig"></a>
 
 ## setCookieDefaultConfig(config) ⇒ <code>undefined</code>
@@ -71,7 +101,13 @@ import {setCookie} from "changlin-wdtools"
 | config | <code>object</code> | 
 
 **Example**  
-```javascriptsetCookieDefaultConfig({ maxAge:3600,path:'/',domain:'abc.com'})```
+```javascript
+setCookieDefaultConfig({
+ maxAge:3600,
+path:'/',
+domain:'abc.com'
+})
+```
 <a name="getCookie"></a>
 
 ## getCookie(name) ⇒ <code>string</code>
@@ -84,7 +120,9 @@ import {setCookie} from "changlin-wdtools"
 | name | <code>string</code> | 
 
 **Example**  
-```javascriptgetCookie('cookieName')```
+```javascript
+getCookie('cookieName')
+```
 <a name="getCookieObject"></a>
 
 ## getCookieObject(name) ⇒ <code>object</code>
@@ -97,7 +135,9 @@ import {setCookie} from "changlin-wdtools"
 | name | <code>string</code> | 
 
 **Example**  
-```javascriptgetCookieObject('cookieName')```
+```javascript
+getCookieObject('cookieName')
+```
 <a name="setCookie"></a>
 
 ## setCookie(name, value, attributes) ⇒ <code>string</code>
@@ -134,7 +174,9 @@ import {setCookie} from "changlin-wdtools"
 | search | <code>string</code> | 
 
 **Example**  
-```javascriptsearchParse('?c=4&b=5')//=>{c:4,b:5}```
+```javascript
+searchParse('?c=4&b=5')//=>{c:4,b:5}
+```
 <a name="searchStringify"></a>
 
 ## searchStringify(object) ⇒ <code>string</code>
@@ -147,7 +189,9 @@ import {setCookie} from "changlin-wdtools"
 | object | <code>object</code> | 
 
 **Example**  
-```javascriptsearchStringify({a:'1234'})//=>'a=1234'```
+```javascript
+searchStringify({a:'1234'})//=>'a=1234'
+```
 <a name="searchExtend"></a>
 
 ## searchExtend(arguments) ⇒ <code>string</code>
@@ -160,7 +204,9 @@ import {setCookie} from "changlin-wdtools"
 | arguments | <code>object</code> \| <code>string</code> | 
 
 **Example**  
-```javascriptsearchExtend('?a=3&b=4', {b:5}, {b:6,c:7})//=>'a=3&b=6&c=7'```
+```javascript
+searchExtend('?a=3&b=4', {b:5}, {b:6,c:7})//=>'a=3&b=6&c=7'
+```
 <a name="getAbsoluteURL"></a>
 
 ## getAbsoluteURL(location) ⇒ <code>string</code>
@@ -190,3 +236,73 @@ import {setCookie} from "changlin-wdtools"
 判断是否为IOS端
 
 **Kind**: global function  
+<a name="requestAnimationFrame"></a>
+
+## requestAnimationFrame(callback) ⇒ <code>number</code>
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| callback | <code>function</code> | 
+
+<a name="cancelAnimationFrame"></a>
+
+## cancelAnimationFrame(id) ⇒ <code>undefined</code>
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| id | <code>number</code> | 
+
+<a name="cssPrefix"></a>
+
+## cssPrefix(key) ⇒ <code>string</code>
+prefix css
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| key | <code>string</code> | 
+
+<a name="css"></a>
+
+## css(el, key, value) ⇒ <code>string</code>
+set or get style
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| el | <code>object</code> | 
+| key | <code>string</code> | 
+| value | <code>string</code> | 
+
+<a name="addEventListener"></a>
+
+## addEventListener(el, type, fn, useCapture) ⇒ <code>undefined</code>
+addEventListener
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| el | <code>object</code> | 
+| type | <code>string</code> | 
+| fn | <code>function</code> | 
+| useCapture | <code>boolean</code> | 
+
+<a name="removeEventListener"></a>
+
+## removeEventListener(el, type, fn, useCapture) ⇒ <code>undefined</code>
+removeEventListener
+
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| el | <code>object</code> | 
+| type | <code>string</code> | 
+| fn | <code>function</code> | 
+| useCapture | <code>boolean</code> | 
+
