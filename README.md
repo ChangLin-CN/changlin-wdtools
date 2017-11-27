@@ -81,6 +81,10 @@ import {setCookie} from "changlin-wdtools"
 <dt><a href="#removeEventListener">removeEventListener(el, type, fn, useCapture)</a> ⇒ <code>undefined</code></dt>
 <dd><p>removeEventListener</p>
 </dd>
+<dt><a href="#findEL">findEL(any)</a> ⇒ <code>null</code> | <code>object</code></dt>
+<dd></dd>
+<dt><a href="#findELs">findELs(any)</a> ⇒ <code>array</code></dt>
+<dd></dd>
 </dl>
 
 <a name="hasTransition"></a>
@@ -305,4 +309,22 @@ removeEventListener
 | type | <code>string</code> | 
 | fn | <code>function</code> | 
 | useCapture | <code>boolean</code> | 
+
+<a name="findEL"></a>
+
+## findEL(any) ⇒ <code>null</code> \| <code>object</code>
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| any | <code>\*</code> | 
+
+<a name="findELs"></a>
+
+## findELs(any) ⇒ <code>array</code>
+**Kind**: global function  
+
+| Param |
+| --- |
+| any | 
 

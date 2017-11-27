@@ -50,4 +50,9 @@ declare module "changlin-wdtools" {
 
     export const hasTransition: boolean
 
+    export function findEL(a: any): object | null
+
+    export function findELs(a: any[] | string): object[]
+
+
 }

@@ -1,6 +1,6 @@
 {
   "name": "changlin-wdtools",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "description": "The  functions that be used in the browser environment",
   "main": "commonjs/index.js",
   "scripts": {
