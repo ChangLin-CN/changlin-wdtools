@@ -54,5 +54,11 @@ declare module "changlin-wdtools" {
 
     export function findELs(a: any[] | string): object[]
 
+    export function offset(el: object): offsetResult
+
+    interface offsetResult {
+        left: number,
+        top: number
+    }
 
 }
