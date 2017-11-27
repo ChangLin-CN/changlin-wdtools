@@ -85,6 +85,8 @@ import {setCookie} from "changlin-wdtools"
 <dd></dd>
 <dt><a href="#findELs">findELs(any)</a> ⇒ <code>array</code></dt>
 <dd></dd>
+<dt><a href="#offset">offset(el)</a> ⇒ <code>Object</code></dt>
+<dd></dd>
 </dl>
 
 <a name="hasTransition"></a>
@@ -327,4 +329,13 @@ removeEventListener
 | Param |
 | --- |
 | any | 
+
+<a name="offset"></a>
+
+## offset(el) ⇒ <code>Object</code>
+**Kind**: global function  
+
+| Param | Type |
+| --- | --- |
+| el | <code>object</code> | 
 

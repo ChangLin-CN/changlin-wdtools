@@ -153,3 +153,12 @@ Object.defineProperty(exports, 'findELs', {
     return _FEL.findELs;
   }
 });
+
+var _offset = require('./offset.js');
+
+Object.defineProperty(exports, 'offset', {
+  enumerable: true,
+  get: function get() {
+    return _offset.offset;
+  }
+});
