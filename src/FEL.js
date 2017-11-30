@@ -1,4 +1,4 @@
-import {isDom,isArray,isString} from 'changlin-util'
+import {isDOM,isArray,isString} from 'changlin-util'
 
 /**
  *
@@ -7,7 +7,7 @@ import {isDom,isArray,isString} from 'changlin-util'
  */
 
 export function findEL(any){
-    if(isDom(any)){
+    if(isDOM(any)){
         return any
     }
     if(isString(any)){
@@ -25,7 +25,7 @@ export function findELs(any){
     if(isString(any)){
         return document.querySelectorAll(any)
     }
-    if(isArray(any)&&(any.filter(n=>isDom(n)).length===any.length)){
+    if(isArray(any)&&(any.filter(n=>isDOM(n)).length===any.length)){
         return any
     }
     return []

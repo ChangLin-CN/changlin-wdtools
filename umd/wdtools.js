@@ -3733,7 +3733,7 @@ var _changlinUtil = __webpack_require__(10);
  */
 
 function findEL(any) {
-    if ((0, _changlinUtil.isDom)(any)) {
+    if ((0, _changlinUtil.isDOM)(any)) {
         return any;
     }
     if ((0, _changlinUtil.isString)(any)) {
@@ -3752,7 +3752,7 @@ function findELs(any) {
         return document.querySelectorAll(any);
     }
     if ((0, _changlinUtil.isArray)(any) && any.filter(function (n) {
-        return (0, _changlinUtil.isDom)(n);
+        return (0, _changlinUtil.isDOM)(n);
     }).length === any.length) {
         return any;
     }
