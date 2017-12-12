@@ -81,6 +81,6 @@ export function searchExtend() {
         }
     }
     let obj=extend(...arr);
-    let result=searchStringify(obj);
-    return result
+
+    return searchStringify(obj);
 }

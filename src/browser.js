@@ -5,7 +5,7 @@ const  browser={
             trident: u.indexOf('Trident') > -1, //IE内核
             presto: u.indexOf('Presto') > -1, //opera内核
             webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') === -1, //火狐内核
             ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
             android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,
             iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1,
